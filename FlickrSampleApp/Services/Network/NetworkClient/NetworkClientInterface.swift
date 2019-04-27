@@ -9,56 +9,29 @@
 import Foundation
 
 protocol NetworkClientInterface: AnyObject {
-    associatedtype Method: ApiMethod
-
-    var configuration: NetworkClientConfiguration { get }
-
-    func request(
-        to networkProvider: NetworkProviderInterface,
-        for method: Method,
-        with parameters: [URLQueryItem]?,
-        completionHandler: @escaping (Result<Data, Error>) -> Void
-    )
+    func executeRequest(_ request: NetworkRequest, at networkProvider: NetworkProviderInterface)
 }
 
 extension NetworkClientInterface {
-    private var predefinedParameters: [URLQueryItem] {
-        return [
-            URLQueryItem(name: "api_key", value: configuration.apiKey),
-            URLQueryItem(name: "format", value: "json"),
-            URLQueryItem(name: "nojsoncallback", value: "1")
-        ]
-    }
-
-    func request(
-        to networkProvider: NetworkProviderInterface,
-        for method: Method,
-        with parameters: [URLQueryItem]?,
-        completionHandler: @escaping (Result<Data, Error>) -> Void
-    ) {
-        guard var urlComponent = URLComponents(url: configuration.baseUrl, resolvingAgainstBaseURL: true) else {
-            completionHandler(
-                    .failure(NetworkError.invalidUrl(string: configuration.baseUrl.absoluteString))
+    func executeRequest(_ request: NetworkRequest, at networkProvider: NetworkProviderInterface) {
+        guard var urlComponent = URLComponents(url: request.baseUrl, resolvingAgainstBaseURL: true) else {
+            request.completionHandler(
+                    .failure(NetworkError.invalidUrl(string: request.baseUrl.absoluteString))
             )
             return
         }
 
-        var combinedParameters = method.query + predefinedParameters
-        if let unwrappedRarameters = parameters {
-            combinedParameters.append(contentsOf: unwrappedRarameters)
-        }
-
         if urlComponent.queryItems == nil {
-            urlComponent.queryItems = combinedParameters
-        } else {
-            urlComponent.queryItems?.append(contentsOf: combinedParameters)
+            urlComponent.queryItems = request.parameters
+        } else if let parameters = request.parameters {
+            urlComponent.queryItems?.append(contentsOf: parameters)
         }
 
         guard let newURL = urlComponent.url else {
-            completionHandler(.failure(NetworkError.invalidUrlCompounding))
+            request.completionHandler(.failure(NetworkError.invalidUrlCompounding))
             return
         }
 
-        networkProvider.downloadData(from: newURL, completionHandler: completionHandler)
+        networkProvider.downloadData(from: newURL, completionHandler: request.completionHandler)
     }
 }

@@ -8,9 +8,19 @@
 
 import Foundation
 
-protocol FlickrNetworkClientInterface: NetworkClientInterface {
+protocol FlickrNetworkClientInterface {
     func request(
-        for method: Method,
+        for method: FlickrMethod,
+        with parameters: [URLQueryItem]?,
         completionHandler: @escaping (Result<Data, Error>) -> Void
     )
+}
+
+extension FlickrNetworkClientInterface {
+    func request(
+        for method: FlickrMethod,
+        completionHandler: @escaping (Result<Data, Error>) -> Void
+    ) {
+        request(for: method, with: nil, completionHandler: completionHandler)
+    }
 }

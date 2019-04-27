@@ -8,11 +8,19 @@
 
 import Foundation
 
-final class FlickrNetworkClient {
+final class FlickrNetworkClient: NetworkClientInterface {
     typealias Method = FlickrMethod
 
-    let configuration: NetworkClientConfiguration
-    let networkProvider: NetworkProviderInterface
+    private let configuration: NetworkClientConfiguration
+    private let networkProvider: NetworkProviderInterface
+
+    private var predefinedParams: [URLQueryItem] {
+        return [
+            URLQueryItem(name: "api_key", value: configuration.apiKey),
+            URLQueryItem(name: "format", value: "json"),
+            URLQueryItem(name: "nojsoncallback", value: "1")
+        ]
+    }
 
     init(networkProvider: NetworkProviderInterface, configuration: NetworkClientConfiguration) {
         self.networkProvider = networkProvider
@@ -21,7 +29,18 @@ final class FlickrNetworkClient {
 }
 
 extension FlickrNetworkClient: FlickrNetworkClientInterface {
-    func request(for method: FlickrMethod, completionHandler: @escaping (Result<Data, Error>) -> Void) {
-        request(to: networkProvider, for: method, with: nil, completionHandler: completionHandler)
+    func request(
+        for method: FlickrMethod,
+        with parameters: [URLQueryItem]?,
+        completionHandler: @escaping (Result<Data, Error>) -> Void
+    ) {
+        let combinedParameters = predefinedParams + method.query + (parameters ?? [])
+
+        let request = NetworkRequest(
+            baseUrl: configuration.baseUrl,
+            parameters: combinedParameters,
+            completionHandler: completionHandler
+        )
+        executeRequest(request, at: networkProvider)
     }
 }
