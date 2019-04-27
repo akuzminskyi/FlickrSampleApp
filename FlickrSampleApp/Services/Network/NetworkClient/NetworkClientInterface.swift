@@ -12,7 +12,7 @@ protocol NetworkClientInterface: AnyObject {
     associatedtype Method: ApiMethod
 
     var networkProvider: NetworkProviderInterface { get }
-    var baseURL: URL { get }
+    var configuration: NetworkClientConfiguration { get }
 
     func request(
         for method: Method,
@@ -27,8 +27,10 @@ extension NetworkClientInterface {
         parameters: [URLQueryItem]? = nil,
         completionHandler: @escaping (Result<Data, Error>) -> Void
     ) {
-        guard var urlComponent = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
-            completionHandler(.failure(NetworkError.invalidUrl(string: baseURL.absoluteString)))
+        guard var urlComponent = URLComponents(url: configuration.baseUrl, resolvingAgainstBaseURL: true) else {
+            completionHandler(
+                    .failure(NetworkError.invalidUrl(string: configuration.baseUrl.absoluteString))
+            )
             return
         }
         let combinedParameters = method.query + (parameters ?? [])

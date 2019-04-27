@@ -18,11 +18,14 @@
 		B7D6BA0C22743720008647C2 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA0B22743720008647C2 /* HTTPMethod.swift */; };
 		B7D6BA0F2274696A008647C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7D6BA0E2274696A008647C2 /* Localizable.strings */; };
 		B7D6BA13227469DC008647C2 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA12227469DC008647C2 /* String+Localizable.swift */; };
+		B7D6BA1F227477F7008647C2 /* FlickrNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA1E227477F7008647C2 /* FlickrNetworkClient.swift */; };
 		B7D6BA21227477FF008647C2 /* FlickrNetworkClientInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA20227477FF008647C2 /* FlickrNetworkClientInterface.swift */; };
 		B7D6BA242274782F008647C2 /* NetworkClientInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA232274782F008647C2 /* NetworkClientInterface.swift */; };
 		B7D6BA2622749388008647C2 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA2522749388008647C2 /* Queryable.swift */; };
 		B7D6BA29227496E6008647C2 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA28227496E6008647C2 /* NetworkError.swift */; };
 		B7D6BA2B22749C35008647C2 /* ApiMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA2A22749C35008647C2 /* ApiMethod.swift */; };
+		B7D6BA2D22749E5E008647C2 /* NetworkClientConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA2C22749E5E008647C2 /* NetworkClientConfiguration.swift */; };
+		B7D6BA2F22749FC3008647C2 /* FlickrMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA2E22749FC3008647C2 /* FlickrMethod.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,11 +54,14 @@
 		B7D6BA0B22743720008647C2 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		B7D6BA0E2274696A008647C2 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		B7D6BA12227469DC008647C2 /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
+		B7D6BA1E227477F7008647C2 /* FlickrNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrNetworkClient.swift; sourceTree = "<group>"; };
 		B7D6BA20227477FF008647C2 /* FlickrNetworkClientInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrNetworkClientInterface.swift; sourceTree = "<group>"; };
 		B7D6BA232274782F008647C2 /* NetworkClientInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientInterface.swift; sourceTree = "<group>"; };
 		B7D6BA2522749388008647C2 /* Queryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queryable.swift; sourceTree = "<group>"; };
 		B7D6BA28227496E6008647C2 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B7D6BA2A22749C35008647C2 /* ApiMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethod.swift; sourceTree = "<group>"; };
+		B7D6BA2C22749E5E008647C2 /* NetworkClientConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientConfiguration.swift; sourceTree = "<group>"; };
+		B7D6BA2E22749FC3008647C2 /* FlickrMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrMethod.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +180,9 @@
 		B7D6BA1C227477C1008647C2 /* FlickrNetworkClient */ = {
 			isa = PBXGroup;
 			children = (
+				B7D6BA1E227477F7008647C2 /* FlickrNetworkClient.swift */,
 				B7D6BA20227477FF008647C2 /* FlickrNetworkClientInterface.swift */,
+				B7D6BA2E22749FC3008647C2 /* FlickrMethod.swift */,
 			);
 			path = FlickrNetworkClient;
 			sourceTree = "<group>";
@@ -183,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				B7D6BA232274782F008647C2 /* NetworkClientInterface.swift */,
+				B7D6BA2C22749E5E008647C2 /* NetworkClientConfiguration.swift */,
 			);
 			path = NetworkClient;
 			sourceTree = "<group>";
@@ -300,13 +309,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7D6BA2D22749E5E008647C2 /* NetworkClientConfiguration.swift in Sources */,
 				B7D6BA2622749388008647C2 /* Queryable.swift in Sources */,
 				B7D6BA0922743698008647C2 /* URLSession+NetworkProviderInterface.swift in Sources */,
 				B7D6BA242274782F008647C2 /* NetworkClientInterface.swift in Sources */,
+				B7D6BA1F227477F7008647C2 /* FlickrNetworkClient.swift in Sources */,
 				B7D6BA21227477FF008647C2 /* FlickrNetworkClientInterface.swift in Sources */,
 				B7D6BA2B22749C35008647C2 /* ApiMethod.swift in Sources */,
 				B7D6BA072274365D008647C2 /* NetworkProviderInterface.swift in Sources */,
 				B7D6B9E62273907C008647C2 /* ViewController.swift in Sources */,
+				B7D6BA2F22749FC3008647C2 /* FlickrMethod.swift in Sources */,
 				B7D6BA0C22743720008647C2 /* HTTPMethod.swift in Sources */,
 				B7D6B9E42273907C008647C2 /* AppDelegate.swift in Sources */,
 				B7D6BA29227496E6008647C2 /* NetworkError.swift in Sources */,
