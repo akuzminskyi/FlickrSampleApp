@@ -9,16 +9,11 @@
 import Foundation
 
 extension URLSession: NetworkProviderInterface {
-
     func downloadData(
         from url: URL,
         timeout: TimeInterval,
         completionHandler: @escaping (Result<Data, Error>) -> Void
     ) {
-        func unexpectedErrorIfNil(_ error: Error?) -> Error {
-            return error ?? networkDomainError(withLocalizedDescription: "Network_Error_UnexpectedError".localized())
-        }
-
         var request = URLRequest(
             url: url,
             cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
@@ -28,8 +23,7 @@ extension URLSession: NetworkProviderInterface {
 
         let dataTask = self.dataTask(with: request) { [] (data, _, error) in
             guard let data = data, error == nil else {
-                let returnError = unexpectedErrorIfNil(error)
-                completionHandler(.failure(returnError))
+                completionHandler(.failure(error ?? NetworkError.unexpectedError))
                 return
             }
 

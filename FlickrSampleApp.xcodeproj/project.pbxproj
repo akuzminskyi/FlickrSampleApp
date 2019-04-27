@@ -18,8 +18,11 @@
 		B7D6BA0C22743720008647C2 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA0B22743720008647C2 /* HTTPMethod.swift */; };
 		B7D6BA0F2274696A008647C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7D6BA0E2274696A008647C2 /* Localizable.strings */; };
 		B7D6BA13227469DC008647C2 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA12227469DC008647C2 /* String+Localizable.swift */; };
+		B7D6BA21227477FF008647C2 /* FlickrNetworkClientInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA20227477FF008647C2 /* FlickrNetworkClientInterface.swift */; };
+		B7D6BA242274782F008647C2 /* NetworkClientInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA232274782F008647C2 /* NetworkClientInterface.swift */; };
 		B7D6BA2622749388008647C2 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA2522749388008647C2 /* Queryable.swift */; };
 		B7D6BA29227496E6008647C2 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA28227496E6008647C2 /* NetworkError.swift */; };
+		B7D6BA2B22749C35008647C2 /* ApiMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA2A22749C35008647C2 /* ApiMethod.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +51,11 @@
 		B7D6BA0B22743720008647C2 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		B7D6BA0E2274696A008647C2 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		B7D6BA12227469DC008647C2 /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
+		B7D6BA20227477FF008647C2 /* FlickrNetworkClientInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrNetworkClientInterface.swift; sourceTree = "<group>"; };
+		B7D6BA232274782F008647C2 /* NetworkClientInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientInterface.swift; sourceTree = "<group>"; };
 		B7D6BA2522749388008647C2 /* Queryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queryable.swift; sourceTree = "<group>"; };
 		B7D6BA28227496E6008647C2 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		B7D6BA2A22749C35008647C2 /* ApiMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethod.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				B7D6BA27227496B1008647C2 /* Auxiliary */,
+				B7D6BA2222747810008647C2 /* NetworkClient */,
+				B7D6BA1C227477C1008647C2 /* FlickrNetworkClient */,
 				B7D6BA0522743652008647C2 /* NetworkProvider */,
 			);
 			path = Network;
@@ -163,12 +171,29 @@
 			path = Foundation;
 			sourceTree = "<group>";
 		};
+		B7D6BA1C227477C1008647C2 /* FlickrNetworkClient */ = {
+			isa = PBXGroup;
+			children = (
+				B7D6BA20227477FF008647C2 /* FlickrNetworkClientInterface.swift */,
+			);
+			path = FlickrNetworkClient;
+			sourceTree = "<group>";
+		};
+		B7D6BA2222747810008647C2 /* NetworkClient */ = {
+			isa = PBXGroup;
+			children = (
+				B7D6BA232274782F008647C2 /* NetworkClientInterface.swift */,
+			);
+			path = NetworkClient;
+			sourceTree = "<group>";
+		};
 		B7D6BA27227496B1008647C2 /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
 				B7D6BA2522749388008647C2 /* Queryable.swift */,
 				B7D6BA0B22743720008647C2 /* HTTPMethod.swift */,
 				B7D6BA28227496E6008647C2 /* NetworkError.swift */,
+				B7D6BA2A22749C35008647C2 /* ApiMethod.swift */,
 			);
 			path = Auxiliary;
 			sourceTree = "<group>";
@@ -277,6 +302,9 @@
 			files = (
 				B7D6BA2622749388008647C2 /* Queryable.swift in Sources */,
 				B7D6BA0922743698008647C2 /* URLSession+NetworkProviderInterface.swift in Sources */,
+				B7D6BA242274782F008647C2 /* NetworkClientInterface.swift in Sources */,
+				B7D6BA21227477FF008647C2 /* FlickrNetworkClientInterface.swift in Sources */,
+				B7D6BA2B22749C35008647C2 /* ApiMethod.swift in Sources */,
 				B7D6BA072274365D008647C2 /* NetworkProviderInterface.swift in Sources */,
 				B7D6B9E62273907C008647C2 /* ViewController.swift in Sources */,
 				B7D6BA0C22743720008647C2 /* HTTPMethod.swift in Sources */,
