@@ -26,6 +26,7 @@
 		B7D6BA2B22749C35008647C2 /* ApiMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA2A22749C35008647C2 /* ApiMethod.swift */; };
 		B7D6BA2D22749E5E008647C2 /* NetworkClientConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA2C22749E5E008647C2 /* NetworkClientConfiguration.swift */; };
 		B7D6BA2F22749FC3008647C2 /* FlickrMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA2E22749FC3008647C2 /* FlickrMethod.swift */; };
+		B7D6BA362274A6DF008647C2 /* Bundle+Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA352274A6DF008647C2 /* Bundle+Variables.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		B7D6BA2A22749C35008647C2 /* ApiMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethod.swift; sourceTree = "<group>"; };
 		B7D6BA2C22749E5E008647C2 /* NetworkClientConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientConfiguration.swift; sourceTree = "<group>"; };
 		B7D6BA2E22749FC3008647C2 /* FlickrMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrMethod.swift; sourceTree = "<group>"; };
+		B7D6BA332274A515008647C2 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		B7D6BA352274A6DF008647C2 /* Bundle+Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Variables.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +106,7 @@
 		B7D6B9E22273907C008647C2 /* FlickrSampleApp */ = {
 			isa = PBXGroup;
 			children = (
-				B7D6BA10227469C9008647C2 /* Helpers */,
+				B7D6BA10227469C9008647C2 /* Auxiliary */,
 				B7D6BA0D2274386D008647C2 /* Resourses */,
 				B7D6BA03227434AF008647C2 /* Services */,
 				B7D6B9E32273907C008647C2 /* AppDelegate.swift */,
@@ -157,22 +160,24 @@
 			isa = PBXGroup;
 			children = (
 				B7D6BA0E2274696A008647C2 /* Localizable.strings */,
+				B7D6BA332274A515008647C2 /* Release.xcconfig */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
 		};
-		B7D6BA10227469C9008647C2 /* Helpers */ = {
+		B7D6BA10227469C9008647C2 /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
 				B7D6BA11227469CF008647C2 /* Foundation */,
 			);
-			path = Helpers;
+			path = Auxiliary;
 			sourceTree = "<group>";
 		};
 		B7D6BA11227469CF008647C2 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
 				B7D6BA12227469DC008647C2 /* String+Localizable.swift */,
+				B7D6BA352274A6DF008647C2 /* Bundle+Variables.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 				B7D6BA2D22749E5E008647C2 /* NetworkClientConfiguration.swift in Sources */,
 				B7D6BA2622749388008647C2 /* Queryable.swift in Sources */,
 				B7D6BA0922743698008647C2 /* URLSession+NetworkProviderInterface.swift in Sources */,
+				B7D6BA362274A6DF008647C2 /* Bundle+Variables.swift in Sources */,
 				B7D6BA242274782F008647C2 /* NetworkClientInterface.swift in Sources */,
 				B7D6BA1F227477F7008647C2 /* FlickrNetworkClient.swift in Sources */,
 				B7D6BA21227477FF008647C2 /* FlickrNetworkClientInterface.swift in Sources */,
@@ -366,6 +372,7 @@
 /* Begin XCBuildConfiguration section */
 		B7D6B9FB2273907D008647C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7D6BA332274A515008647C2 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -427,6 +434,7 @@
 		};
 		B7D6B9FC2273907D008647C2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7D6BA332274A515008647C2 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -482,6 +490,7 @@
 		};
 		B7D6B9FE2273907D008647C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7D6BA332274A515008647C2 /* Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -501,6 +510,7 @@
 		};
 		B7D6B9FF2273907D008647C2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7D6BA332274A515008647C2 /* Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -520,6 +530,7 @@
 		};
 		B7D6BA012273907D008647C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7D6BA332274A515008647C2 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -541,6 +552,7 @@
 		};
 		B7D6BA022273907D008647C2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7D6BA332274A515008647C2 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

@@ -12,3 +12,13 @@ struct NetworkClientConfiguration {
     let baseUrl: URL
     let apiKey: String
 }
+
+extension NetworkClientConfiguration {
+    init(from bundle: Bundle) throws {
+        self.init(
+            baseUrl: try bundle.flickrRestUrl(),
+            apiKey: try bundle.flickrApiKey()
+        )
+    }
+}
+

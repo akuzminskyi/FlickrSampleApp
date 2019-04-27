@@ -1,0 +1,14 @@
+//
+//  Release.xcconfig
+//  FlickrSampleApp
+//
+//  Created by Andrii Kuzminskyi on 27/04/2019.
+//  Copyright © 2019 akuzminskyi. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+FLICKR_REST_URL = https:/$()/api.flickr.com/services/rest/
+FLICKR_API_KEY = 3e7cc266ae2b0e0d78e279ce8e361736
+
