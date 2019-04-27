@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class FlickrNetworkClient: FlickrNetworkClientInterface {
+final class FlickrNetworkClient {
     typealias Method = FlickrMethod
 
     let configuration: NetworkClientConfiguration
@@ -17,5 +17,11 @@ final class FlickrNetworkClient: FlickrNetworkClientInterface {
     init(networkProvider: NetworkProviderInterface, configuration: NetworkClientConfiguration) {
         self.networkProvider = networkProvider
         self.configuration = configuration
+    }
+}
+
+extension FlickrNetworkClient: FlickrNetworkClientInterface {
+    func request(for method: FlickrMethod, completionHandler: @escaping (Result<Data, Error>) -> Void) {
+        request(to: networkProvider, for: method, with: nil, completionHandler: completionHandler)
     }
 }

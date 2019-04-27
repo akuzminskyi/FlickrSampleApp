@@ -11,20 +11,21 @@ import Foundation
 protocol NetworkClientInterface: AnyObject {
     associatedtype Method: ApiMethod
 
-    var networkProvider: NetworkProviderInterface { get }
     var configuration: NetworkClientConfiguration { get }
 
     func request(
+        to networkProvider: NetworkProviderInterface,
         for method: Method,
-        parameters: [URLQueryItem]?,
+        with parameters: [URLQueryItem]?,
         completionHandler: @escaping (Result<Data, Error>) -> Void
     )
 }
 
 extension NetworkClientInterface {
     func request(
+        to networkProvider: NetworkProviderInterface,
         for method: Method,
-        parameters: [URLQueryItem]? = nil,
+        with parameters: [URLQueryItem]?,
         completionHandler: @escaping (Result<Data, Error>) -> Void
     ) {
         guard var urlComponent = URLComponents(url: configuration.baseUrl, resolvingAgainstBaseURL: true) else {
@@ -33,7 +34,11 @@ extension NetworkClientInterface {
             )
             return
         }
-        let combinedParameters = method.query + (parameters ?? [])
+
+        var combinedParameters = method.query + [URLQueryItem(name: "api_key", value: configuration.apiKey)]
+        if let unwrappedRarameters = parameters {
+            combinedParameters.append(contentsOf: unwrappedRarameters)
+        }
 
         if urlComponent.queryItems == nil {
             urlComponent.queryItems = combinedParameters

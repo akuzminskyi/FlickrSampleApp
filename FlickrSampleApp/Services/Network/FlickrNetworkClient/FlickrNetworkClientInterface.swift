@@ -11,17 +11,6 @@ import Foundation
 protocol FlickrNetworkClientInterface: NetworkClientInterface {
     func request(
         for method: Method,
-        parameters: [URLQueryItem]?,
         completionHandler: @escaping (Result<Data, Error>) -> Void
     )
-}
-
-extension FlickrNetworkClientInterface {
-    func request(
-        for method: Method,
-        parameters: [URLQueryItem]?,
-        completionHandler: @escaping (Result<Data, Error>) -> Void
-    ) {
-        request(for: method, parameters: nil, completionHandler: completionHandler)
-    }
 }
