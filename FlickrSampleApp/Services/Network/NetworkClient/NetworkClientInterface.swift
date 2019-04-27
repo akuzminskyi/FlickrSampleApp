@@ -22,6 +22,14 @@ protocol NetworkClientInterface: AnyObject {
 }
 
 extension NetworkClientInterface {
+    private var predefinedParameters: [URLQueryItem] {
+        return [
+            URLQueryItem(name: "api_key", value: configuration.apiKey),
+            URLQueryItem(name: "format", value: "json"),
+            URLQueryItem(name: "nojsoncallback", value: "1")
+        ]
+    }
+
     func request(
         to networkProvider: NetworkProviderInterface,
         for method: Method,
@@ -35,7 +43,7 @@ extension NetworkClientInterface {
             return
         }
 
-        var combinedParameters = method.query + [URLQueryItem(name: "api_key", value: configuration.apiKey)]
+        var combinedParameters = method.query + predefinedParameters
         if let unwrappedRarameters = parameters {
             combinedParameters.append(contentsOf: unwrappedRarameters)
         }
