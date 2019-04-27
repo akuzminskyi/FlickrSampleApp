@@ -13,6 +13,11 @@
 		B7D6B9EB2273907D008647C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7D6B9EA2273907D008647C2 /* Assets.xcassets */; };
 		B7D6B9EE2273907D008647C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7D6B9EC2273907D008647C2 /* LaunchScreen.storyboard */; };
 		B7D6B9F92273907D008647C2 /* FlickrSampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6B9F82273907D008647C2 /* FlickrSampleAppTests.swift */; };
+		B7D6BA072274365D008647C2 /* NetworkProviderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA062274365D008647C2 /* NetworkProviderInterface.swift */; };
+		B7D6BA0922743698008647C2 /* URLSession+NetworkProviderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA0822743698008647C2 /* URLSession+NetworkProviderInterface.swift */; };
+		B7D6BA0C22743720008647C2 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA0B22743720008647C2 /* HTTPMethod.swift */; };
+		B7D6BA0F2274696A008647C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7D6BA0E2274696A008647C2 /* Localizable.strings */; };
+		B7D6BA13227469DC008647C2 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6BA12227469DC008647C2 /* String+Localizable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,11 @@
 		B7D6B9F42273907D008647C2 /* FlickrSampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlickrSampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D6B9F82273907D008647C2 /* FlickrSampleAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrSampleAppTests.swift; sourceTree = "<group>"; };
 		B7D6B9FA2273907D008647C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7D6BA062274365D008647C2 /* NetworkProviderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProviderInterface.swift; sourceTree = "<group>"; };
+		B7D6BA0822743698008647C2 /* URLSession+NetworkProviderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+NetworkProviderInterface.swift"; sourceTree = "<group>"; };
+		B7D6BA0B22743720008647C2 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		B7D6BA0E2274696A008647C2 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		B7D6BA12227469DC008647C2 /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +87,9 @@
 		B7D6B9E22273907C008647C2 /* FlickrSampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				B7D6BA10227469C9008647C2 /* Helpers */,
+				B7D6BA0D2274386D008647C2 /* Resourses */,
+				B7D6BA03227434AF008647C2 /* Services */,
 				B7D6B9E32273907C008647C2 /* AppDelegate.swift */,
 				B7D6B9E52273907C008647C2 /* ViewController.swift */,
 				B7D6B9E72273907C008647C2 /* Main.storyboard */,
@@ -94,6 +107,64 @@
 				B7D6B9FA2273907D008647C2 /* Info.plist */,
 			);
 			path = FlickrSampleAppTests;
+			sourceTree = "<group>";
+		};
+		B7D6BA03227434AF008647C2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B7D6BA04227434B5008647C2 /* Network */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B7D6BA04227434B5008647C2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B7D6BA0A227436FE008647C2 /* HTTPMethod */,
+				B7D6BA0522743652008647C2 /* NetworkProvider */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B7D6BA0522743652008647C2 /* NetworkProvider */ = {
+			isa = PBXGroup;
+			children = (
+				B7D6BA062274365D008647C2 /* NetworkProviderInterface.swift */,
+				B7D6BA0822743698008647C2 /* URLSession+NetworkProviderInterface.swift */,
+			);
+			path = NetworkProvider;
+			sourceTree = "<group>";
+		};
+		B7D6BA0A227436FE008647C2 /* HTTPMethod */ = {
+			isa = PBXGroup;
+			children = (
+				B7D6BA0B22743720008647C2 /* HTTPMethod.swift */,
+			);
+			path = HTTPMethod;
+			sourceTree = "<group>";
+		};
+		B7D6BA0D2274386D008647C2 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				B7D6BA0E2274696A008647C2 /* Localizable.strings */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		B7D6BA10227469C9008647C2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B7D6BA11227469CF008647C2 /* Foundation */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B7D6BA11227469CF008647C2 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				B7D6BA12227469DC008647C2 /* String+Localizable.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7D6B9EE2273907D008647C2 /* LaunchScreen.storyboard in Resources */,
+				B7D6BA0F2274696A008647C2 /* Localizable.strings in Resources */,
 				B7D6B9EB2273907D008647C2 /* Assets.xcassets in Resources */,
 				B7D6B9E92273907C008647C2 /* Main.storyboard in Resources */,
 			);
@@ -197,8 +269,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7D6BA0922743698008647C2 /* URLSession+NetworkProviderInterface.swift in Sources */,
+				B7D6BA072274365D008647C2 /* NetworkProviderInterface.swift in Sources */,
 				B7D6B9E62273907C008647C2 /* ViewController.swift in Sources */,
+				B7D6BA0C22743720008647C2 /* HTTPMethod.swift in Sources */,
 				B7D6B9E42273907C008647C2 /* AppDelegate.swift in Sources */,
+				B7D6BA13227469DC008647C2 /* String+Localizable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
