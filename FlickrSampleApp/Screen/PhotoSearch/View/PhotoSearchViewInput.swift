@@ -10,5 +10,6 @@ import Foundation
 
 protocol PhotoSearchViewInput: AnyObject {
     func setSearchBarPlaceholder(_ text: String?)
+    func showSearchResult(for text: String, with viewModels: [PhotoViewModel])
     func showSearchingIndicator(_ isSearching: Bool)
 }

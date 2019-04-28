@@ -31,7 +31,13 @@ final class PhotoSearchPresenter {
 
 extension PhotoSearchPresenter: PhotoSearchInteractorOutput {
     func search(by text: String, completed result: Result<[Photo?], Error>) {
-
+        switch result {
+        case let .failure(error):
+            break
+        case let .success(photos):
+            let viewModels = viewModelBuilder.viewModels(from: photos)
+            view?.showSearchResult(for: text, with: viewModels)
+        }
     }
 
     func fetchPhoto(at index: Int, completed result: Result<(range: Range<Int>, photos: [Photo]), Error>) {

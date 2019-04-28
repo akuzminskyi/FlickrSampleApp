@@ -12,6 +12,7 @@ final class PhotoSearchViewController: UIViewController {
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var searchBar: UISearchBar!
+    private var viewModels: [PhotoViewModel]?
 
     var output: PhotoSearchViewOutput?
 
@@ -23,7 +24,7 @@ final class PhotoSearchViewController: UIViewController {
 
 extension PhotoSearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return viewModels?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -38,6 +39,12 @@ extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
 }
 
 extension PhotoSearchViewController: PhotoSearchViewInput {
+    func showSearchResult(for text: String, with viewModels: [PhotoViewModel]) {
+        searchBar.text = text
+        self.viewModels = viewModels
+        collectionView.reloadData()
+    }
+
     func setSearchBarPlaceholder(_ text: String?) {
         searchBar.placeholder = text
     }
