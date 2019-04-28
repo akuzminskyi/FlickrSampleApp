@@ -10,6 +10,6 @@ import Foundation
 
 struct FlickrPhotoURLBuilder: FlickrPhotoURLBuilderInterface {
     func photoUrl(from photo: Photo) -> URL? {
-        return URL(string: "http://farm\(photo.farm).static.flickr.com/\(photo.server)/{\(photo.id)_\(photo.secret).jpg")
+        return URL(string: "https://farm\(photo.farm).static.flickr.com/\(photo.server)/\(photo.id)_\(photo.secret).jpg")
     }
 }

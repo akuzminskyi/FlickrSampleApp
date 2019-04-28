@@ -73,6 +73,7 @@
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="oIl-QO-4bx" id="C3e-aX-nX0"/>
+                                    <outlet property="delegate" destination="oIl-QO-4bx" id="OoN-cL-kJI"/>
                                     <outlet property="prefetchDataSource" destination="oIl-QO-4bx" id="c28-4d-7nH"/>
                                 </connections>
                             </collectionView>

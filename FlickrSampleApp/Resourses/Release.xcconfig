@@ -11,4 +11,3 @@
 
 FLICKR_REST_URL = https:/$()/api.flickr.com/services/rest/
 FLICKR_API_KEY = 3e7cc266ae2b0e0d78e279ce8e361736
-
