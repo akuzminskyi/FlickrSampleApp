@@ -17,9 +17,65 @@
                     <view key="view" contentMode="scaleToFill" id="lIz-Tx-YxZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.14943534459999999" blue="0.1923159213" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="06C-lm-B3Y">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="oIl-QO-4bx" id="h58-2j-nYJ"/>
+                                </connections>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="quS-4b-iAf">
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jgf-88-cuC">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="RLG-ep-GF2">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="oIl-QO-4bx" id="C3e-aX-nX0"/>
+                                    <outlet property="prefetchDataSource" destination="oIl-QO-4bx" id="c28-4d-7nH"/>
+                                </connections>
+                            </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WlF-NL-6cI">
+                                <rect key="frame" x="188.5" y="462.5" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WlF-NL-6cI" firstAttribute="centerX" secondItem="quS-4b-iAf" secondAttribute="centerX" id="476-FB-6hH"/>
+                            <constraint firstItem="06C-lm-B3Y" firstAttribute="trailing" secondItem="4xJ-Cp-kp2" secondAttribute="trailing" id="6oA-iv-hgV"/>
+                            <constraint firstItem="4xJ-Cp-kp2" firstAttribute="trailing" secondItem="quS-4b-iAf" secondAttribute="trailing" id="ANl-oJ-K6h"/>
+                            <constraint firstItem="quS-4b-iAf" firstAttribute="leading" secondItem="4xJ-Cp-kp2" secondAttribute="leading" id="CVA-0C-fcE"/>
+                            <constraint firstItem="4xJ-Cp-kp2" firstAttribute="bottom" secondItem="quS-4b-iAf" secondAttribute="bottom" id="DbH-Bh-7c6"/>
+                            <constraint firstItem="06C-lm-B3Y" firstAttribute="leading" secondItem="4xJ-Cp-kp2" secondAttribute="leading" id="YS2-w9-osG"/>
+                            <constraint firstItem="06C-lm-B3Y" firstAttribute="top" secondItem="4xJ-Cp-kp2" secondAttribute="top" id="pJB-pr-jHz"/>
+                            <constraint firstItem="quS-4b-iAf" firstAttribute="top" secondItem="06C-lm-B3Y" secondAttribute="bottom" id="uWy-lP-fGy"/>
+                            <constraint firstItem="WlF-NL-6cI" firstAttribute="centerY" secondItem="quS-4b-iAf" secondAttribute="centerY" id="zCm-8g-oHY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4xJ-Cp-kp2"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="WlF-NL-6cI" id="nXb-YR-LKp"/>
+                        <outlet property="collectionView" destination="quS-4b-iAf" id="qUl-O0-nKQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYz-Sn-FuR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
