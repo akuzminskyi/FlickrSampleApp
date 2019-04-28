@@ -28,7 +28,8 @@ extension PhotoSearchViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell(frame: .zero)
+        let cell: PhotoSearchCell = collectionView.dequeueReusableCell(for: indexPath)
+        return cell
     }
 }
 
@@ -40,7 +41,6 @@ extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
 
 extension PhotoSearchViewController: PhotoSearchViewInput {
     func showSearchResult(for text: String, with viewModels: [PhotoViewModel]) {
-        searchBar.text = text
         self.viewModels = viewModels
         collectionView.reloadData()
     }
