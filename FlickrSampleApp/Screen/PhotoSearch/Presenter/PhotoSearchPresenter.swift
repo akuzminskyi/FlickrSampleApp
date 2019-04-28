@@ -32,7 +32,8 @@ final class PhotoSearchPresenter {
 extension PhotoSearchPresenter: PhotoSearchInteractorOutput {
     func search(by text: String, completed result: Result<[Photo?], Error>) {
         switch result {
-        case let .failure(error):
+        case let .failure(_):
+            // TODO: Add error handling
             break
         case let .success(photos):
             let viewModels = viewModelBuilder.viewModels(from: photos)
@@ -46,6 +47,12 @@ extension PhotoSearchPresenter: PhotoSearchInteractorOutput {
 }
 
 extension PhotoSearchPresenter: PhotoSearchViewOutput {
+    func onPrefetchItemAt(indexes: [Int]) {
+        indexes.forEach { index in
+            interactor.fetchPhotos(at: index)
+        }
+    }
+
     func onViewDidLoad() {
         view?.setSearchBarPlaceholder("PhotoSearch_SearchBar_Placeholder".localized())
     }

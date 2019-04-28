@@ -51,7 +51,7 @@ extension PhotoSearchInteractor: PhotoSearchInteractorInput {
             self.output?.search(by: text, completed: .failure(Error.emptyText))
             return
         }
-
+        // TODO: Add cancel previous request
         flickrService.photoSearch(
             by: text,
             with: photoSearchAttributes(withPage: Constant.firstPageIndex),
@@ -79,6 +79,7 @@ extension PhotoSearchInteractor: PhotoSearchInteractorInput {
             return
         }
         let page = self.pageAt(index: index, withBatchSize: batchSize)
+        // TODO: Add in progress list Set<Int>
 
         flickrService.photoSearch(
             by: text,

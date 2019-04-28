@@ -34,7 +34,7 @@ extension PhotoSearchViewController: UICollectionViewDataSource {
 
 extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-
+        output?.onPrefetchItemAt(indexes: indexPaths.map { $0.row })
     }
 }
 

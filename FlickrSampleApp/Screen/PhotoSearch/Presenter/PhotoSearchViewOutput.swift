@@ -12,4 +12,5 @@ protocol PhotoSearchViewOutput: AnyObject {
     func onViewDidLoad()
 
     func searchTextDidChange(_ text: String)
+    func onPrefetchItemAt(indexes: [Int])
 }
