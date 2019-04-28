@@ -28,6 +28,7 @@
 		B793947A2274F4BA00B519AF /* PhotoSearchViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79394792274F4BA00B519AF /* PhotoSearchViewInterface.swift */; };
 		B793947D2275F93E00B519AF /* ApplicationRouterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B793947C2275F93E00B519AF /* ApplicationRouterInterface.swift */; };
 		B793947F2275F95800B519AF /* ApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B793947E2275F95800B519AF /* ApplicationRouter.swift */; };
+		B7939482227604C700B519AF /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7939481227604C700B519AF /* Throttler.swift */; };
 		B7D6B9E42273907C008647C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6B9E32273907C008647C2 /* AppDelegate.swift */; };
 		B7D6B9EB2273907D008647C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7D6B9EA2273907D008647C2 /* Assets.xcassets */; };
 		B7D6B9EE2273907D008647C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7D6B9EC2273907D008647C2 /* LaunchScreen.storyboard */; };
@@ -80,6 +81,7 @@
 		B79394792274F4BA00B519AF /* PhotoSearchViewInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchViewInterface.swift; sourceTree = "<group>"; };
 		B793947C2275F93E00B519AF /* ApplicationRouterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouterInterface.swift; sourceTree = "<group>"; };
 		B793947E2275F95800B519AF /* ApplicationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouter.swift; sourceTree = "<group>"; };
+		B7939481227604C700B519AF /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		B7D6B9E02273907C008647C2 /* FlickrSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D6B9E32273907C008647C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7D6B9EA2273907D008647C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 		B793946D2274F32C00B519AF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B7939480227604BC00B519AF /* Throttler */,
 				B793946E2274F33700B519AF /* UIKit */,
 				B7D6BA11227469CF008647C2 /* Foundation */,
 			);
@@ -239,6 +242,14 @@
 				B793947E2275F95800B519AF /* ApplicationRouter.swift */,
 			);
 			path = ApplicationRouter;
+			sourceTree = "<group>";
+		};
+		B7939480227604BC00B519AF /* Throttler */ = {
+			isa = PBXGroup;
+			children = (
+				B7939481227604C700B519AF /* Throttler.swift */,
+			);
+			path = Throttler;
 			sourceTree = "<group>";
 		};
 		B7D6B9D72273907C008647C2 = {
@@ -491,6 +502,7 @@
 				B79394662274F12400B519AF /* PhotoSearchRouterInterface.swift in Sources */,
 				B79394722274F37500B519AF /* PhotoSearchPresenter.swift in Sources */,
 				B7D6BA0922743698008647C2 /* URLSession+NetworkProviderInterface.swift in Sources */,
+				B7939482227604C700B519AF /* Throttler.swift in Sources */,
 				B7D6BA362274A6DF008647C2 /* Bundle+Variables.swift in Sources */,
 				B79394682274F23400B519AF /* PhotoSearchRouter.swift in Sources */,
 				B7D6BA242274782F008647C2 /* NetworkClientInterface.swift in Sources */,
