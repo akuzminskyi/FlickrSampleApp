@@ -31,6 +31,10 @@
 		B7939482227604C700B519AF /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7939481227604C700B519AF /* Throttler.swift */; };
 		B793948422761C3D00B519AF /* PhotoSearchInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B793948322761C3D00B519AF /* PhotoSearchInteractorOutput.swift */; };
 		B793948822762B9900B519AF /* PhotoSearchAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B793948722762B9900B519AF /* PhotoSearchAttributes.swift */; };
+		B793948A227637E200B519AF /* PhotoSearchViewModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7939489227637E200B519AF /* PhotoSearchViewModelBuilder.swift */; };
+		B793948C227637EE00B519AF /* PhotoSearchViewModelBuilderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B793948B227637EE00B519AF /* PhotoSearchViewModelBuilderInterface.swift */; };
+		B793948F2276391400B519AF /* FlickrPhotoURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B793948E2276391400B519AF /* FlickrPhotoURLBuilder.swift */; };
+		B79394912276397100B519AF /* FlickrPhotoURLBuilderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79394902276397100B519AF /* FlickrPhotoURLBuilderInterface.swift */; };
 		B7D6B9E42273907C008647C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6B9E32273907C008647C2 /* AppDelegate.swift */; };
 		B7D6B9EB2273907D008647C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7D6B9EA2273907D008647C2 /* Assets.xcassets */; };
 		B7D6B9EE2273907D008647C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7D6B9EC2273907D008647C2 /* LaunchScreen.storyboard */; };
@@ -86,6 +90,10 @@
 		B7939481227604C700B519AF /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		B793948322761C3D00B519AF /* PhotoSearchInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchInteractorOutput.swift; sourceTree = "<group>"; };
 		B793948722762B9900B519AF /* PhotoSearchAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchAttributes.swift; sourceTree = "<group>"; };
+		B7939489227637E200B519AF /* PhotoSearchViewModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchViewModelBuilder.swift; sourceTree = "<group>"; };
+		B793948B227637EE00B519AF /* PhotoSearchViewModelBuilderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchViewModelBuilderInterface.swift; sourceTree = "<group>"; };
+		B793948E2276391400B519AF /* FlickrPhotoURLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoURLBuilder.swift; sourceTree = "<group>"; };
+		B79394902276397100B519AF /* FlickrPhotoURLBuilderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoURLBuilderInterface.swift; sourceTree = "<group>"; };
 		B7D6B9E02273907C008647C2 /* FlickrSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D6B9E32273907C008647C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7D6B9EA2273907D008647C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -194,6 +202,8 @@
 			children = (
 				B793945E2274EEC200B519AF /* ViewModel */,
 				B79394712274F37500B519AF /* PhotoSearchPresenter.swift */,
+				B7939489227637E200B519AF /* PhotoSearchViewModelBuilder.swift */,
+				B793948B227637EE00B519AF /* PhotoSearchViewModelBuilderInterface.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -258,6 +268,15 @@
 			path = Throttler;
 			sourceTree = "<group>";
 		};
+		B793948D227638E000B519AF /* FlickrPhotoURLBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				B793948E2276391400B519AF /* FlickrPhotoURLBuilder.swift */,
+				B79394902276397100B519AF /* FlickrPhotoURLBuilderInterface.swift */,
+			);
+			path = FlickrPhotoURLBuilder;
+			sourceTree = "<group>";
+		};
 		B7D6B9D72273907C008647C2 = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +322,7 @@
 		B7D6BA03227434AF008647C2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B793948D227638E000B519AF /* FlickrPhotoURLBuilder */,
 				B793947B2275F91100B519AF /* ApplicationRouter */,
 				B793944B2274E15100B519AF /* FlickrService */,
 				B7D6BA04227434B5008647C2 /* Network */,
@@ -505,8 +525,10 @@
 				B79394502274E1F400B519AF /* PaginatedResponse.swift in Sources */,
 				B793946C2274F27100B519AF /* PhotoSearchViewController.swift in Sources */,
 				B793948822762B9900B519AF /* PhotoSearchAttributes.swift in Sources */,
+				B793948F2276391400B519AF /* FlickrPhotoURLBuilder.swift in Sources */,
 				B793944A2274DFA200B519AF /* NetworkRequest.swift in Sources */,
 				B79394662274F12400B519AF /* PhotoSearchRouterInterface.swift in Sources */,
+				B79394912276397100B519AF /* FlickrPhotoURLBuilderInterface.swift in Sources */,
 				B79394722274F37500B519AF /* PhotoSearchPresenter.swift in Sources */,
 				B7D6BA0922743698008647C2 /* URLSession+NetworkProviderInterface.swift in Sources */,
 				B7939482227604C700B519AF /* Throttler.swift in Sources */,
@@ -521,9 +543,11 @@
 				B793947D2275F93E00B519AF /* ApplicationRouterInterface.swift in Sources */,
 				B7D6BA2B22749C35008647C2 /* ApiMethod.swift in Sources */,
 				B7D6BA072274365D008647C2 /* NetworkProviderInterface.swift in Sources */,
+				B793948A227637E200B519AF /* PhotoSearchViewModelBuilder.swift in Sources */,
 				B793944E2274E17800B519AF /* Photo.swift in Sources */,
 				B7D6BA2F22749FC3008647C2 /* FlickrMethod.swift in Sources */,
 				B7D6BA0C22743720008647C2 /* HTTPMethod.swift in Sources */,
+				B793948C227637EE00B519AF /* PhotoSearchViewModelBuilderInterface.swift in Sources */,
 				B7D6B9E42273907C008647C2 /* AppDelegate.swift in Sources */,
 				B7D6BA29227496E6008647C2 /* NetworkError.swift in Sources */,
 				B793947F2275F95800B519AF /* ApplicationRouter.swift in Sources */,

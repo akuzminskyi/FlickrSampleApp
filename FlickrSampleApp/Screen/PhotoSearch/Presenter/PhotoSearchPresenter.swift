@@ -15,14 +15,17 @@ final class PhotoSearchPresenter {
 
     private weak var view: PhotoSearchViewInput?
     private let interactor: PhotoSearchInteractorInput
+    private let viewModelBuilder: PhotoSearchViewModelBuilderInterface
     private let searchThrottler = Throttler(timeout: Constant.throttleTimeout)
 
     init(
         view: PhotoSearchViewInput,
-        interactor: PhotoSearchInteractorInput
+        interactor: PhotoSearchInteractorInput,
+        viewModelBuilder: PhotoSearchViewModelBuilderInterface
     ) {
         self.view = view
         self.interactor = interactor
+        self.viewModelBuilder = viewModelBuilder
     }
 }
 

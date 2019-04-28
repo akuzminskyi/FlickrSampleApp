@@ -24,9 +24,11 @@ enum PhotoSearchRouter: PhotoSearchRouterInterface {
 
         let storyboard = UIStoryboard(name: Constant.storyboardName, bundle: .main)
         let view: PhotoSearchViewController = storyboard.instantiateViewController()
+        let viewModelBuilder = PhotoSearchViewModelBuilder(photoUrlBuilder: FlickrPhotoURLBuilder())
         let presenter = PhotoSearchPresenter(
             view: view,
-            interactor: interactor
+            interactor: interactor,
+            viewModelBuilder: viewModelBuilder
         )
 
         interactor.output = presenter

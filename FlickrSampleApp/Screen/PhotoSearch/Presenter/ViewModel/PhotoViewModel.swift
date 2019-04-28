@@ -9,5 +9,5 @@
 import Foundation
 
 struct PhotoViewModel {
-    let imageUrl: URL
+    let imageUrl: URL?
 }
