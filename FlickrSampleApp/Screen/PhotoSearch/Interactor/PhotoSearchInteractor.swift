@@ -9,6 +9,10 @@
 import Foundation
 
 final class PhotoSearchInteractor {
+    private enum Error: Swift.Error {
+        case emptyText
+    }
+
     private enum Constant {
         static let batchSize: Int = 20
         static let isSafeSearchEnabled = true
@@ -43,6 +47,11 @@ final class PhotoSearchInteractor {
 
 extension PhotoSearchInteractor: PhotoSearchInteractorInput {
     func fetchPhotos(by text: String) {
+        guard !text.isEmpty else {
+            self.output?.search(by: text, completed: .failure(Error.emptyText))
+            return
+        }
+
         flickrService.photoSearch(
             by: text,
             with: photoSearchAttributes(withPage: Constant.firstPageIndex),
