@@ -13,21 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        window = UIWindow(frame: UIScreen.main.bounds)
-        if let viewController = try? PhotoSearchRouter.buildModule() {
-            window?.rootViewController = UINavigationController(rootViewController: viewController)
-        } else {
-            assertionFailure("Can't build a module")
-            window?.rootViewController = UIViewController()
-        }
-        window?.makeKeyAndVisible()
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
+        let applicationRouter = ApplicationRouter(window: window)
+        applicationRouter.start()
 
+        window.makeKeyAndVisible()
         return true
     }
-
-
 }
-
