@@ -18,6 +18,12 @@ final class PhotoSearchViewController: UIViewController {
 }
 
 extension PhotoSearchViewController: PhotoSearchViewInput {
+    func showSearchingIndicator(_ isSearching: Bool) {
+    }
 }
 
+extension PhotoSearchViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        output?.searchTextDidChange(searchText)
+    }
 }

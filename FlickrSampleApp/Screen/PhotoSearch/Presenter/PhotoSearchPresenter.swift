@@ -9,8 +9,13 @@
 import Foundation
 
 final class PhotoSearchPresenter {
+    private enum Constant {
+        static let throttleTimeout: TimeInterval = 0.5
+    }
+
     private weak var view: PhotoSearchViewInput?
     private let interactor: PhotoSearchInteractorInput
+    private let searchThrottler = Throttler(timeout: Constant.throttleTimeout)
 
     init(
         view: PhotoSearchViewInput,
@@ -32,6 +37,12 @@ extension PhotoSearchPresenter: PhotoSearchInteractorOutput {
 }
 
 extension PhotoSearchPresenter: PhotoSearchViewOutput {
+    func searchTextDidChange(_ text: String) {
+        searchThrottler.throttle { [weak self] in
+            self?.interactor.fetchPhotos(by: text)
+        }
+    }
+
     func onViewDidLoad() {
 
     }
