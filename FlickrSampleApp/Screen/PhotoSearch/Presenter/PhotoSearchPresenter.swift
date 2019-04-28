@@ -22,7 +22,15 @@ final class PhotoSearchPresenter {
 }
 
 extension PhotoSearchPresenter: PhotoSearchInteractorOutput {
+    func search(by text: String, completed result: Result<[Photo?], Error>) {
+
+    }
+
+    func fetchPhoto(at index: Int, completed result: Result<(range: Range<Int>, photos: [Photo]), Error>) {
+
+    }
 }
+
 extension PhotoSearchPresenter: PhotoSearchViewOutput {
     func onViewDidLoad() {
 

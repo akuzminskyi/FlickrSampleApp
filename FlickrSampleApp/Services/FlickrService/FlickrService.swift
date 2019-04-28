@@ -17,8 +17,8 @@ final class FlickrService {
 }
 
 extension FlickrService: FlickrServiceInterface {
-    func photoSearch(by text: String, completionHandler: @escaping ((Result<PhotoSearchResponse, Error>) -> Void)) {
-        networkClient.request(for: .search(text: text)) { result in
+    func photoSearch(by text: String, with attributes: PhotoSearchAttributes?, completionHandler: @escaping ((Result<PhotoSearchResponse, Error>) -> Void)) {
+        networkClient.request(for: .search(text: text), with: attributes?.query) { result in
             let mainThreadCompletionHandler: (Result<PhotoSearchResponse, Error>) -> Void = { value in
                 DispatchQueue.main.async {
                     completionHandler(value)

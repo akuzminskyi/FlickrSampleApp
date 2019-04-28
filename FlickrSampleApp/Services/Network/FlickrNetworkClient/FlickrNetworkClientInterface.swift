@@ -15,12 +15,3 @@ protocol FlickrNetworkClientInterface {
         completionHandler: @escaping (Result<Data, Error>) -> Void
     )
 }
-
-extension FlickrNetworkClientInterface {
-    func request(
-        for method: FlickrMethod,
-        completionHandler: @escaping (Result<Data, Error>) -> Void
-    ) {
-        request(for: method, with: nil, completionHandler: completionHandler)
-    }
-}

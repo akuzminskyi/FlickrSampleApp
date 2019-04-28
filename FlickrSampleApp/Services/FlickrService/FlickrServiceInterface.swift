@@ -9,12 +9,20 @@
 import Foundation
 
 protocol FlickrServiceInterface {
-    func photoSearch(by text: String, completionHandler: @escaping ((Result<PhotoSearchResponse, Error>) -> Void))
+    func photoSearch(
+        by text: String,
+        with attributes: PhotoSearchAttributes?,
+        completionHandler: @escaping ((Result<PhotoSearchResponse, Error>) -> Void)
+    )
 }
 
 extension FlickrServiceInterface {
-    func photosSearch(by text: String, completionHandler: @escaping ((Result<PaginatedResponse<Photo>, Error>) -> Void)) {
-        photoSearch(by: text) { (result: Result<PhotoSearchResponse, Error>) in
+    func photoSearch(
+        by text: String,
+        with attributes: PhotoSearchAttributes?,
+        completionHandler: @escaping ((Result<PaginatedResponse<Photo>, Error>) -> Void)
+    ) {
+        photoSearch(by: text, with: attributes) { (result: Result<PhotoSearchResponse, Error>) in
             switch result {
             case let .failure(error):
                 completionHandler(.failure(error))
