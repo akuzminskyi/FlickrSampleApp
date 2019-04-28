@@ -34,6 +34,12 @@ extension PhotoSearchViewController: UICollectionViewDataSource {
 }
 extension PhotoSearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? PhotoSearchCell else {
+            return
+        }
+        if let imageUrl = viewModels?[indexPath.item].imageUrl {
+            cell.imageView.downloaded(from: imageUrl)
+        }
     }
 }
 
@@ -66,5 +72,23 @@ extension PhotoSearchViewController: PhotoSearchViewInput {
 extension PhotoSearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         output?.searchTextDidChange(searchText)
+    }
+}
+
+private extension UIImageView {
+    // TODO: sample code, remove it
+    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() {
+                self.image = image
+            }
+        }.resume()
     }
 }
