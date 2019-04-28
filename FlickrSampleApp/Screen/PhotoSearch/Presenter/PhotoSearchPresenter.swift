@@ -31,6 +31,7 @@ final class PhotoSearchPresenter {
 
 extension PhotoSearchPresenter: PhotoSearchInteractorOutput {
     func search(by text: String, completed result: Result<[Photo?], Error>) {
+        view?.showSearchingIndicator(false)
         switch result {
         case let .failure(_):
             // TODO: Add error handling
@@ -59,6 +60,7 @@ extension PhotoSearchPresenter: PhotoSearchViewOutput {
 
     func searchTextDidChange(_ text: String) {
         searchThrottler.throttle { [weak self] in
+            self?.view?.showSearchingIndicator(true)
             self?.interactor.fetchPhotos(by: text)
         }
     }
