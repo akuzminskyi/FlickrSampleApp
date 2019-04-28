@@ -37,13 +37,13 @@ extension PhotoSearchPresenter: PhotoSearchInteractorOutput {
 }
 
 extension PhotoSearchPresenter: PhotoSearchViewOutput {
+    func onViewDidLoad() {
+        view?.setSearchBarPlaceholder("PhotoSearch_SearchBar_Placeholder".localized())
+    }
+
     func searchTextDidChange(_ text: String) {
         searchThrottler.throttle { [weak self] in
             self?.interactor.fetchPhotos(by: text)
         }
-    }
-
-    func onViewDidLoad() {
-
     }
 }

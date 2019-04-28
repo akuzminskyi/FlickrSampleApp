@@ -75,6 +75,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="WlF-NL-6cI" id="nXb-YR-LKp"/>
                         <outlet property="collectionView" destination="quS-4b-iAf" id="qUl-O0-nKQ"/>
+                        <outlet property="searchBar" destination="06C-lm-B3Y" id="BWe-J1-czu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYz-Sn-FuR" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,8 +11,10 @@ import UIKit
 final class PhotoSearchViewController: UIViewController {
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+
     var output: PhotoSearchViewOutput?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         output?.onViewDidLoad()
@@ -36,6 +38,10 @@ extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
 }
 
 extension PhotoSearchViewController: PhotoSearchViewInput {
+    func setSearchBarPlaceholder(_ text: String?) {
+        searchBar.placeholder = text
+    }
+
     func showSearchingIndicator(_ isSearching: Bool) {
         if isSearching {
             activityIndicator.startAnimating()

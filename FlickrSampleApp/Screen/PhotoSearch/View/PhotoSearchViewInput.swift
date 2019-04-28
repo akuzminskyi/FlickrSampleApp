@@ -9,5 +9,6 @@
 import Foundation
 
 protocol PhotoSearchViewInput: AnyObject {
+    func setSearchBarPlaceholder(_ text: String?)
     func showSearchingIndicator(_ isSearching: Bool)
 }
