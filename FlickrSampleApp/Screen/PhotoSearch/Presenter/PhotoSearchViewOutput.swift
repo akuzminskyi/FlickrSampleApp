@@ -1,5 +1,5 @@
 //
-//  PhotoSearchViewInterface.swift
+//  PhotoSearchViewOutput.swift
 //  FlickrSampleApp
 //
 //  Created by Andrii Kuzminskyi on 27/04/2019.
@@ -8,6 +8,8 @@
 
 import Foundation
 
-protocol PhotoSearchViewInterface: AnyObject {
+protocol PhotoSearchViewOutput: AnyObject {
+    func onViewDidLoad()
 
+    func searchTextDidChange(_ text: String)
 }

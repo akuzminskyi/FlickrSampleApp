@@ -9,14 +9,15 @@
 import UIKit
 
 final class PhotoSearchViewController: UIViewController {
-    var presenter: PhotoSearchPresenterInterface?
-
+    var output: PhotoSearchViewOutput?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.onViewDidLoad()
+        output?.onViewDidLoad()
     }
 }
 
-extension PhotoSearchViewController: PhotoSearchViewInterface {
+extension PhotoSearchViewController: PhotoSearchViewInput {
+}
 
 }

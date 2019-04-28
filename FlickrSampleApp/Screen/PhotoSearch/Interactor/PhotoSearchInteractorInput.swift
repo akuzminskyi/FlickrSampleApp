@@ -1,5 +1,5 @@
 //
-//  PhotoSearchInteractorInterface.swift
+//  PhotoSearchInteractorInput.swift
 //  FlickrSampleApp
 //
 //  Created by Andrii Kuzminskyi on 27/04/2019.
@@ -8,6 +8,7 @@
 
 import Foundation
 
-protocol PhotoSearchInteractorInterface {
-    
+protocol PhotoSearchInteractorInput {
+    func fetchPhotos(by text: String)
+    func fetchPhotos(at index: Int)
 }

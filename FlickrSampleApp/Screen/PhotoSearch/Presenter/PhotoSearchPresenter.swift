@@ -9,19 +9,21 @@
 import Foundation
 
 final class PhotoSearchPresenter {
-    private weak var view: PhotoSearchViewInterface?
-    private let interactor: PhotoSearchInteractorInterface
+    private weak var view: PhotoSearchViewInput?
+    private let interactor: PhotoSearchInteractorInput
 
     init(
-        view: PhotoSearchViewInterface,
-        interactor: PhotoSearchInteractorInterface
+        view: PhotoSearchViewInput,
+        interactor: PhotoSearchInteractorInput
     ) {
         self.view = view
         self.interactor = interactor
     }
 }
 
-extension PhotoSearchPresenter: PhotoSearchPresenterInterface {
+extension PhotoSearchPresenter: PhotoSearchInteractorOutput {
+}
+extension PhotoSearchPresenter: PhotoSearchViewOutput {
     func onViewDidLoad() {
 
     }

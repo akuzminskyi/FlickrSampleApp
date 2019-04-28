@@ -29,8 +29,8 @@ enum PhotoSearchRouter: PhotoSearchRouterInterface {
             interactor: interactor
         )
 
-        interactor.presenter = presenter
-        view.presenter = presenter
+        interactor.output = presenter
+        view.output = presenter
 
         return view
     }

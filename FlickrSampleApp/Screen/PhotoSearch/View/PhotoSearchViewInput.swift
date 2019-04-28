@@ -1,5 +1,5 @@
 //
-//  PhotoSearchPresenterInterface.swift
+//  PhotoSearchViewInput.swift
 //  FlickrSampleApp
 //
 //  Created by Andrii Kuzminskyi on 27/04/2019.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol PhotoSearchPresenterInterface: AnyObject {
-    func onViewDidLoad()
+protocol PhotoSearchViewInput: AnyObject {
+    func showSearchingIndicator(_ isSearching: Bool)
 }

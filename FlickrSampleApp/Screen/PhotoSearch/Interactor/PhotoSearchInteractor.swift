@@ -9,7 +9,7 @@
 import Foundation
 
 final class PhotoSearchInteractor {
-    weak var presenter: PhotoSearchPresenterInterface?
+    weak var output: PhotoSearchInteractorOutput?
     private let flickrService: FlickrServiceInterface
 
     init(flickrService: FlickrServiceInterface) {
@@ -17,6 +17,7 @@ final class PhotoSearchInteractor {
     }
 }
 
-extension PhotoSearchInteractor: PhotoSearchInteractorInterface {
+extension PhotoSearchInteractor: PhotoSearchInteractorInput {
 
+    }
 }
