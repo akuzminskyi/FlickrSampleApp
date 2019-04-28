@@ -8,10 +8,11 @@
 
 import UIKit
 
-enum PhotoSearchRouter {
+enum PhotoSearchRouter: PhotoSearchRouterInterface {
     private enum Constant {
         static let storyboardName = "PhotoSearch"
     }
+
     static func buildModule() throws -> UIViewController {
         let configuration = try NetworkClientConfiguration(from: Bundle.main)
         let networkClient = FlickrNetworkClient(

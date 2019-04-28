@@ -8,6 +8,4 @@
 
 import Foundation
 
-protocol PhotoSearchRouterInterface {
-    
-}
+protocol PhotoSearchRouterInterface: ModuleRouterInterface { }
