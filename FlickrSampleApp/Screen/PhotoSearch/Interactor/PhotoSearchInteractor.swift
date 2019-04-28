@@ -55,7 +55,7 @@ extension PhotoSearchInteractor: PhotoSearchInteractorInput {
         flickrService.photoSearch(
             by: text,
             with: photoSearchAttributes(withPage: Constant.firstPageIndex),
-            completionHandler: { [weak self] (result: Result<PaginatedResponse<Photo>, Error>) in
+            completionHandler: { [weak self] (result: Result<PaginatedResponse<Photo>, Swift.Error>) in
                 guard let self = self else {
                     return
                 }
@@ -83,7 +83,7 @@ extension PhotoSearchInteractor: PhotoSearchInteractorInput {
         flickrService.photoSearch(
             by: text,
             with: photoSearchAttributes(withPage: page),
-            completionHandler: { [weak self] (result: Result<PaginatedResponse<Photo>, Error>) in
+            completionHandler: { [weak self] (result: Result<PaginatedResponse<Photo>, Swift.Error>) in
                 guard let self = self else {
                     return
                 }
