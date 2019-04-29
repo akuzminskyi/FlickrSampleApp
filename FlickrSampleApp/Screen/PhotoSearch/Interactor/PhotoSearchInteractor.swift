@@ -21,10 +21,14 @@ final class PhotoSearchInteractor {
 
     weak var output: PhotoSearchInteractorOutput?
     private let flickrService: FlickrServiceInterface
-    private var lastSuccededTextSearch: String?
-    private var batchSize: Int {
-        return Constant.batchSize
+    private var actualSearchTerm: String? {
+        didSet {
+            fetchNextPagesQueue.removeAll()
+            fetchedPage.removeAll()
+        }
     }
+    private var fetchNextPagesQueue = UniqueQueue<Int>()
+    private var fetchedPage = Set<Int>()
 
     init(flickrService: FlickrServiceInterface) {
         self.flickrService = flickrService
@@ -33,7 +37,7 @@ final class PhotoSearchInteractor {
     // MARK: - private metods
 
     private func photoSearchAttributes(withPage page: Int) -> PhotoSearchAttributes {
-        return PhotoSearchAttributes(batchSize: batchSize, page: page, isSafeSearch: Constant.isSafeSearchEnabled)
+        return PhotoSearchAttributes(batchSize: Constant.batchSize, page: page, isSafeSearch: Constant.isSafeSearchEnabled)
     }
 
     private func pageAt(index: Int, withBatchSize batchSize: Int) -> Int {
@@ -43,6 +47,42 @@ final class PhotoSearchInteractor {
         }
         return index / batchSize + 1
     }
+
+    private func proceedFetchPageFromQueue() {
+        guard let page = fetchNextPagesQueue.dequeue() else {
+            return
+        }
+        fetchPhotosAt(page: page)
+    }
+
+    private func fetchPhotosAt(page: Int) {
+        guard let text = actualSearchTerm else {
+            return
+        }
+        flickrService.photoSearch(
+            by: text,
+            with: photoSearchAttributes(withPage: page),
+            completionHandler: { [weak self] (result: Result<PaginatedResponse<Photo>, Swift.Error>) in
+                guard let self = self, self.actualSearchTerm == text else {
+                    return
+                }
+
+                switch result {
+                case let .failure(error):
+                    self.output?.fetchPhoto(at: page, completed: .failure(error))
+                case let .success(paginatedResponse):
+                    let startIndex = (paginatedResponse.page - 1) * Constant.batchSize
+                    let range = startIndex..<(startIndex + paginatedResponse.result.count)
+                    self.output?.fetchPhoto(at: page, completed: .success((range, paginatedResponse.result)))
+                    self.fetchedPage.insert(page)
+                }
+
+                DispatchQueue.main.async {
+                    self.proceedFetchPageFromQueue()
+                }
+            }
+        )
+    }
 }
 
 extension PhotoSearchInteractor: PhotoSearchInteractorInput {
@@ -51,53 +91,36 @@ extension PhotoSearchInteractor: PhotoSearchInteractorInput {
             self.output?.search(by: text, completed: .failure(Error.emptyText))
             return
         }
-        // TODO: Add cancel previous request
+        actualSearchTerm = text
         flickrService.photoSearch(
             by: text,
             with: photoSearchAttributes(withPage: Constant.firstPageIndex),
             completionHandler: { [weak self] (result: Result<PaginatedResponse<Photo>, Swift.Error>) in
-                guard let self = self else {
+                guard let self = self, self.actualSearchTerm == text else {
                     return
                 }
-
                 switch result {
                 case let .failure(error):
-                    self.lastSuccededTextSearch = nil
+                    self.actualSearchTerm = nil
                     self.output?.search(by: text, completed: .failure(error))
                 case let .success(paginatedResponse):
-                    self.lastSuccededTextSearch = text
                     var photos = [Photo?](repeating: nil, count: paginatedResponse.total)
                     photos.replaceSubrange(0..<paginatedResponse.result.count, with: paginatedResponse.result)
                     self.output?.search(by: text, completed: .success(photos))
+                    self.fetchedPage.insert(Constant.firstPageIndex)
                 }
             }
         )
     }
 
-    func fetchPhotos(at index: Int) {
-        guard let text = lastSuccededTextSearch else {
-            return
+    func fetchPhotosAt(indexes: [Int]) {
+        indexes.map { index in
+            return self.pageAt(index: index, withBatchSize: Constant.batchSize)
+        }.orderedSet.filter { value -> Bool in
+            !fetchedPage.contains(value)
+        }.forEach { value in
+            fetchNextPagesQueue.enqueue(value)
         }
-        let page = self.pageAt(index: index, withBatchSize: batchSize)
-        // TODO: Add in progress list Set<Int>
-
-        flickrService.photoSearch(
-            by: text,
-            with: photoSearchAttributes(withPage: page),
-            completionHandler: { [weak self] (result: Result<PaginatedResponse<Photo>, Swift.Error>) in
-                guard let self = self else {
-                    return
-                }
-
-                switch result {
-                case let .failure(error):
-                    self.output?.fetchPhoto(at: index, completed: .failure(error))
-                case let .success(paginatedResponse):
-                    let startIndex = (paginatedResponse.page - 1) * self.batchSize
-                    let range = startIndex..<(startIndex + paginatedResponse.result.count)
-                    self.output?.fetchPhoto(at: index, completed: .success((range, paginatedResponse.result)))
-                }
-            }
-        )
+        proceedFetchPageFromQueue()
     }
 }

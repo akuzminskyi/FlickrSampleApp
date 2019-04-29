@@ -41,8 +41,8 @@ extension PhotoSearchPresenter: PhotoSearchInteractorOutput {
             view?.showSearchResult(for: text, with: viewModels)
         }
     }
-    
-    func fetchPhoto(at index: Int, completed result: Result<(range: Range<Int>, photos: [Photo]), Error>) {
+
+    func fetchPhoto(at page: Int, completed result: Result<(range: Range<Int>, photos: [Photo]), Error>) {
         // TODO: Add error handling
         switch result {
         case .failure(_):
@@ -56,9 +56,7 @@ extension PhotoSearchPresenter: PhotoSearchInteractorOutput {
 
 extension PhotoSearchPresenter: PhotoSearchViewOutput {
     func onPrefetchItemAt(indexes: [Int]) {
-        indexes.forEach { index in
-            interactor.fetchPhotos(at: index)
-        }
+        interactor.fetchPhotosAt(indexes: indexes)
     }
 
     func onViewDidLoad() {

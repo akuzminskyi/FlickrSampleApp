@@ -10,5 +10,5 @@ import Foundation
 
 protocol PhotoSearchInteractorInput {
     func fetchPhotos(by text: String)
-    func fetchPhotos(at index: Int)
+    func fetchPhotosAt(indexes: [Int])
 }

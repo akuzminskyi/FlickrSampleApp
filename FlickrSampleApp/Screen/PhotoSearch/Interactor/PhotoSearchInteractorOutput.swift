@@ -11,5 +11,5 @@ import Foundation
 protocol PhotoSearchInteractorOutput: AnyObject {
     func search(by text: String, completed result: Result<[Photo?], Error>)
 
-    func fetchPhoto(at index: Int, completed result: Result<(range: Range<Int>, photos: [Photo]), Error>)
+    func fetchPhoto(at page: Int, completed result: Result<(range: Range<Int>, photos: [Photo]), Error>)
 }
