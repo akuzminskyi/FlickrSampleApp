@@ -9,22 +9,27 @@
 import UIKit
 
 extension UIImageView {
-    // TODO: Add NSCache
     enum Error: Swift.Error {
         case invalidImageData
     }
 
     func downloadImage(
         from url: URL,
+        using cache: NSCache<NSURL, UIImage>? = .sharedImageCache,
         completionHandler: @escaping (Result<UIImage, Swift.Error>) -> Void
     ) {
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            let mainThreadCompletionHandler: (Result<UIImage, Swift.Error>) -> Void = { value in
-                DispatchQueue.main.async {
-                    completionHandler(value)
-                }
+        let mainThreadCompletionHandler: (Result<UIImage, Swift.Error>) -> Void = { value in
+            DispatchQueue.main.async {
+                completionHandler(value)
             }
+        }
 
+        if let image = cache?.object(forKey: url as NSURL) {
+            mainThreadCompletionHandler(.success(image))
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 mainThreadCompletionHandler(.failure(error))
                 return
@@ -34,6 +39,7 @@ extension UIImageView {
                 return
             }
 
+            cache?.setObject(image, forKey: url as NSURL)
             mainThreadCompletionHandler(.success(image))
         }.resume()
     }
