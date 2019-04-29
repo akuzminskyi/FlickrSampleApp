@@ -9,8 +9,15 @@
 import Foundation
 
 struct PaginatedResponse<T: Decodable>: Decodable {
-    enum Error: Swift.Error {
+    enum Error: Swift.Error, LocalizedError {
         case unexpectedTotalValue
+
+        var errorDescription: String? {
+            switch self {
+            case .unexpectedTotalValue:
+                return "PaginatedResponse_Error_UnexpectedTotalValue".localized()
+            }
+        }
     }
 
     let page: Int

@@ -9,8 +9,15 @@
 import Foundation
 
 final class PhotoSearchInteractor {
-    private enum Error: Swift.Error {
+    private enum Error: Swift.Error, LocalizedError {
         case emptyText
+
+        var errorDescription: String? {
+            switch self {
+            case .emptyText:
+                return "Error_SearchTerm_Empty".localized()
+            }
+        }
     }
 
     private enum Constant {

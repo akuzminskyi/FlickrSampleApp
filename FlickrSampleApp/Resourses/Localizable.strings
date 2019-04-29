@@ -1,1 +1,4 @@
 "PhotoSearch_SearchBar_Placeholder" = "Type something to explore the world";
+"Error_SearchTerm_Empty" = "Search term can't be empty.";
+"Error_ImageDownloader_InvalidImageData" = "Invalid image data.";
+"PaginatedResponse_Error_UnexpectedTotalValue" = "Unexpected value for key 'totalValue'";

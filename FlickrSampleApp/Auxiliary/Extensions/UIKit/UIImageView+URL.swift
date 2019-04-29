@@ -9,8 +9,15 @@
 import UIKit
 
 extension UIImageView {
-    enum Error: Swift.Error {
+    enum Error: Swift.Error, LocalizedError {
         case invalidImageData
+
+        var errorDescription: String? {
+            switch self {
+            case .invalidImageData:
+                return "Error_ImageDownloader_InvalidImageData".localized()
+            }
+        }
     }
 
     func downloadImage(

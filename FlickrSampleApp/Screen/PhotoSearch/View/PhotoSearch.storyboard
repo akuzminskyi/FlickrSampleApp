@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="06C-lm-B3Y">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="97"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -29,76 +29,91 @@
                                     <outlet property="delegate" destination="oIl-QO-4bx" id="h58-2j-nYJ"/>
                                 </connections>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="quS-4b-iAf">
-                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KXp-tj-hhk" customClass="ColumnFlowLayout" customModule="FlickrSampleApp" customModuleProvider="target">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="numerOfColumn">
-                                            <integer key="value" value="3"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="sizeRatio">
-                                            <real key="value" value="0.75"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoSearchCell" id="RLG-ep-GF2" customClass="PhotoSearchCell" customModule="FlickrSampleApp" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4xK-Ti-xO6">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KL7-uL-0hi">
+                                <rect key="frame" x="0.0" y="141" width="414" height="721"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBU-DN-aWz">
+                                        <rect key="frame" x="207" y="0.0" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="quS-4b-iAf">
+                                        <rect key="frame" x="0.0" y="8" width="414" height="713"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KXp-tj-hhk" customClass="ColumnFlowLayout" customModule="FlickrSampleApp" customModuleProvider="target">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="numerOfColumn">
+                                                    <integer key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="sizeRatio">
+                                                    <real key="value" value="0.75"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="PhotoSearchCell" id="RLG-ep-GF2" customClass="PhotoSearchCell" customModule="FlickrSampleApp" customModuleProvider="target">
+                                                <rect key="frame" x="10" y="10" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                </imageView>
-                                            </subviews>
-                                        </view>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="4xK-Ti-xO6" firstAttribute="top" secondItem="RLG-ep-GF2" secondAttribute="top" id="3BU-r0-DWy"/>
-                                            <constraint firstItem="4xK-Ti-xO6" firstAttribute="leading" secondItem="RLG-ep-GF2" secondAttribute="leading" id="5GU-v0-afy"/>
-                                            <constraint firstAttribute="trailing" secondItem="4xK-Ti-xO6" secondAttribute="trailing" id="N8f-FB-kCN"/>
-                                            <constraint firstAttribute="bottom" secondItem="4xK-Ti-xO6" secondAttribute="bottom" id="oe0-Sm-3h5"/>
-                                        </constraints>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4xK-Ti-xO6">
+                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                </view>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="4xK-Ti-xO6" firstAttribute="top" secondItem="RLG-ep-GF2" secondAttribute="top" id="3BU-r0-DWy"/>
+                                                    <constraint firstItem="4xK-Ti-xO6" firstAttribute="leading" secondItem="RLG-ep-GF2" secondAttribute="leading" id="5GU-v0-afy"/>
+                                                    <constraint firstAttribute="trailing" secondItem="4xK-Ti-xO6" secondAttribute="trailing" id="N8f-FB-kCN"/>
+                                                    <constraint firstAttribute="bottom" secondItem="4xK-Ti-xO6" secondAttribute="bottom" id="oe0-Sm-3h5"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="imageView" destination="4xK-Ti-xO6" id="ilR-Mp-NGw"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
                                         <connections>
-                                            <outlet property="imageView" destination="4xK-Ti-xO6" id="ilR-Mp-NGw"/>
+                                            <outlet property="dataSource" destination="oIl-QO-4bx" id="C3e-aX-nX0"/>
+                                            <outlet property="delegate" destination="oIl-QO-4bx" id="OoN-cL-kJI"/>
+                                            <outlet property="prefetchDataSource" destination="oIl-QO-4bx" id="c28-4d-7nH"/>
                                         </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="oIl-QO-4bx" id="C3e-aX-nX0"/>
-                                    <outlet property="delegate" destination="oIl-QO-4bx" id="OoN-cL-kJI"/>
-                                    <outlet property="prefetchDataSource" destination="oIl-QO-4bx" id="c28-4d-7nH"/>
-                                </connections>
-                            </collectionView>
+                                    </collectionView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="quS-4b-iAf" firstAttribute="width" secondItem="KL7-uL-0hi" secondAttribute="width" id="W5S-cg-vyN"/>
+                                </constraints>
+                            </stackView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WlF-NL-6cI">
-                                <rect key="frame" x="188.5" y="462.5" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="487" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="WlF-NL-6cI" firstAttribute="centerX" secondItem="quS-4b-iAf" secondAttribute="centerX" id="476-FB-6hH"/>
+                            <constraint firstItem="WlF-NL-6cI" firstAttribute="centerY" secondItem="quS-4b-iAf" secondAttribute="centerY" id="2Wg-am-EtH"/>
                             <constraint firstItem="06C-lm-B3Y" firstAttribute="trailing" secondItem="4xJ-Cp-kp2" secondAttribute="trailing" id="6oA-iv-hgV"/>
-                            <constraint firstItem="4xJ-Cp-kp2" firstAttribute="trailing" secondItem="quS-4b-iAf" secondAttribute="trailing" id="ANl-oJ-K6h"/>
-                            <constraint firstItem="quS-4b-iAf" firstAttribute="leading" secondItem="4xJ-Cp-kp2" secondAttribute="leading" id="CVA-0C-fcE"/>
-                            <constraint firstItem="4xJ-Cp-kp2" firstAttribute="bottom" secondItem="quS-4b-iAf" secondAttribute="bottom" id="DbH-Bh-7c6"/>
+                            <constraint firstItem="KL7-uL-0hi" firstAttribute="bottom" secondItem="4xJ-Cp-kp2" secondAttribute="bottom" id="XnV-Mt-gNX"/>
                             <constraint firstItem="06C-lm-B3Y" firstAttribute="leading" secondItem="4xJ-Cp-kp2" secondAttribute="leading" id="YS2-w9-osG"/>
+                            <constraint firstItem="KL7-uL-0hi" firstAttribute="top" secondItem="06C-lm-B3Y" secondAttribute="bottom" id="Ztj-eC-5Tb"/>
                             <constraint firstItem="06C-lm-B3Y" firstAttribute="top" secondItem="4xJ-Cp-kp2" secondAttribute="top" id="pJB-pr-jHz"/>
-                            <constraint firstItem="quS-4b-iAf" firstAttribute="top" secondItem="06C-lm-B3Y" secondAttribute="bottom" id="uWy-lP-fGy"/>
-                            <constraint firstItem="WlF-NL-6cI" firstAttribute="centerY" secondItem="quS-4b-iAf" secondAttribute="centerY" id="zCm-8g-oHY"/>
+                            <constraint firstItem="4xJ-Cp-kp2" firstAttribute="trailing" secondItem="KL7-uL-0hi" secondAttribute="trailing" id="spG-Yy-UxH"/>
+                            <constraint firstItem="WlF-NL-6cI" firstAttribute="centerX" secondItem="quS-4b-iAf" secondAttribute="centerX" id="vz4-WY-Icc"/>
+                            <constraint firstItem="KL7-uL-0hi" firstAttribute="leading" secondItem="4xJ-Cp-kp2" secondAttribute="leading" id="z5P-Xw-gQf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4xJ-Cp-kp2"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="WlF-NL-6cI" id="nXb-YR-LKp"/>
                         <outlet property="collectionView" destination="quS-4b-iAf" id="qUl-O0-nKQ"/>
+                        <outlet property="errorLabel" destination="TBU-DN-aWz" id="Zew-HY-iH4"/>
                         <outlet property="searchBar" destination="06C-lm-B3Y" id="BWe-J1-czu"/>
                     </connections>
                 </viewController>

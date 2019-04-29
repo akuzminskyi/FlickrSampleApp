@@ -13,4 +13,6 @@ protocol PhotoSearchViewInput: AnyObject {
     func showSearchResult(for text: String, with viewModels: [PhotoViewModel])
     func showUpdatedViewModels(_ viewModels: [PhotoViewModel], at range: Range<Int>)
     func showSearchingIndicator(_ isSearching: Bool)
+    func showError(_ message: String)
+    func hideError()
 }

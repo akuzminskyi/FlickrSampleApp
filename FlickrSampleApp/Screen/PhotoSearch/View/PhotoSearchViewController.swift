@@ -12,6 +12,8 @@ final class PhotoSearchViewController: UIViewController {
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var errorLabel: UILabel!
+
     private var viewModels: [PhotoViewModel]?
 
     var output: PhotoSearchViewOutput?
@@ -58,6 +60,15 @@ extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
 }
 
 extension PhotoSearchViewController: PhotoSearchViewInput {
+    func hideError() {
+        errorLabel.isHidden = true
+    }
+
+    func showError(_ message: String) {
+        errorLabel.text = message
+        errorLabel.isHidden = false
+    }
+
     func showUpdatedViewModels(_ viewModels: [PhotoViewModel], at range: Range<Int>) {
         let updatedIndexPaths = range.map { IndexPath(item: $0, section: 0) }
         self.viewModels?.replaceSubrange(range, with: viewModels)

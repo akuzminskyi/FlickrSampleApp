@@ -33,17 +33,17 @@ extension PhotoSearchPresenter: PhotoSearchInteractorOutput {
     func search(by text: String, completed result: Result<[Photo?], Error>) {
         view?.showSearchingIndicator(false)
         switch result {
-        case let .failure(_):
-            // TODO: Add error handling
-            break
+        case let .failure(error):
+            view?.showError(error.localizedDescription)
+            view?.showSearchResult(for: text, with: [])
         case let .success(photos):
+            view?.hideError()
             let viewModels = viewModelBuilder.viewModels(from: photos)
             view?.showSearchResult(for: text, with: viewModels)
         }
     }
 
     func fetchPhoto(at page: Int, completed result: Result<(range: Range<Int>, photos: [Photo]), Error>) {
-        // TODO: Add error handling
         switch result {
         case .failure(_):
             break
