@@ -50,6 +50,12 @@ extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
 }
 
 extension PhotoSearchViewController: PhotoSearchViewInput {
+    func showUpdatedViewModels(_ viewModels: [PhotoViewModel], at range: Range<Int>) {
+        let updatedIndexPaths = range.map { IndexPath(item: $0, section: 0) }
+        self.viewModels?.replaceSubrange(range, with: viewModels)
+        collectionView.reloadItems(at: updatedIndexPaths)
+    }
+
     func showSearchResult(for text: String, with viewModels: [PhotoViewModel]) {
         self.viewModels = viewModels
         collectionView.reloadData()

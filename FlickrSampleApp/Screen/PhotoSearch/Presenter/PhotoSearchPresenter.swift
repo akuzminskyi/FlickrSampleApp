@@ -41,9 +41,16 @@ extension PhotoSearchPresenter: PhotoSearchInteractorOutput {
             view?.showSearchResult(for: text, with: viewModels)
         }
     }
-
+    
     func fetchPhoto(at index: Int, completed result: Result<(range: Range<Int>, photos: [Photo]), Error>) {
-
+        // TODO: Add error handling
+        switch result {
+        case .failure(_):
+            break
+        case let .success((range, photos)):
+            let viewModels = viewModelBuilder.viewModels(from: photos)
+            view?.showUpdatedViewModels(viewModels, at: range)
+        }
     }
 }
 

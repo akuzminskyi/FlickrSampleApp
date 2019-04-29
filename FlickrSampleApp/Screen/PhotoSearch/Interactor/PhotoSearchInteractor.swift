@@ -41,7 +41,7 @@ final class PhotoSearchInteractor {
             assertionFailure("The batchSize have to be more then 0.")
             return index
         }
-        return index / batchSize
+        return index / batchSize + 1
     }
 }
 
