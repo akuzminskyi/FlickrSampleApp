@@ -37,8 +37,16 @@ extension PhotoSearchViewController: UICollectionViewDelegate {
         guard let cell = cell as? PhotoSearchCell else {
             return
         }
+
         if let imageUrl = viewModels?[indexPath.item].imageUrl {
-            cell.imageView.downloaded(from: imageUrl)
+            cell.imageView.downloadImage(from: imageUrl) { result in
+                guard collectionView.indexPath(for: cell) == indexPath,
+                    case let .success(image) = result else {
+                        return
+                }
+
+                cell.imageView.image = image
+            }
         }
     }
 }
@@ -59,6 +67,11 @@ extension PhotoSearchViewController: PhotoSearchViewInput {
     func showSearchResult(for text: String, with viewModels: [PhotoViewModel]) {
         self.viewModels = viewModels
         collectionView.reloadData()
+        if viewModels.isEmpty {
+            collectionView.contentOffset = .zero
+        } else {
+            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+        }
     }
 
     func setSearchBarPlaceholder(_ text: String?) {
@@ -78,23 +91,5 @@ extension PhotoSearchViewController: PhotoSearchViewInput {
 extension PhotoSearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         output?.searchTextDidChange(searchText)
-    }
-}
-
-private extension UIImageView {
-    // TODO: sample code, remove it
-    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
-        contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() {
-                self.image = image
-            }
-        }.resume()
     }
 }
