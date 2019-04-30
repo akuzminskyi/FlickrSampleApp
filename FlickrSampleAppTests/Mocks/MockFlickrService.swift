@@ -7,6 +7,7 @@
 //
 
 import Foundation
+@testable import FlickrSampleApp
 
 final class MockFlickrService: FlickrServiceInterface {
     private(set) var spyPhotoSearch = [(text: String, attributes: PhotoSearchAttributes?)]()

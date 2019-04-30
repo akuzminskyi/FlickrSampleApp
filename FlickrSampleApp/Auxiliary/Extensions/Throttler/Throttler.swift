@@ -19,6 +19,10 @@ final class Throttler {
     }
 
     func throttle(_ block: @escaping () -> Void) {
+        guard timeout > 0.0 else {
+            block()
+            return
+        }
         workItem.cancel()
 
         workItem = DispatchWorkItem() {
