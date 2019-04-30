@@ -34,6 +34,20 @@ struct PaginatedResponse<T: Decodable>: Decodable {
         case result = "photo"
     }
 
+    init(
+        page: Int,
+        pages: Int,
+        perpage: Int,
+        total: Int,
+        result: [T]
+    ) {
+        self.page = page
+        self.pages = pages
+        self.perpage = perpage
+        self.total = total
+        self.result = result
+    }
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let stringTotal = try container.decode(String.self, forKey: .total)
