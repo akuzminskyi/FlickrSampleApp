@@ -19,7 +19,7 @@ enum PhotoSearchRouter: PhotoSearchRouterInterface {
             networkProvider: URLSession.shared,
             configuration: configuration
         )
-        let flickrService = FlickrService(networkClient: networkClient)
+        let flickrService = FlickrService(networkClient: networkClient, jsonParser: JSONParser())
         let interactor = PhotoSearchInteractor(flickrService: flickrService)
 
         let storyboard = UIStoryboard(name: Constant.storyboardName, bundle: .main)

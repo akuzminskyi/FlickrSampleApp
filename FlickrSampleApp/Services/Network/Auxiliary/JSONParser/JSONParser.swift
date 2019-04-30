@@ -8,10 +8,10 @@
 
 import Foundation
 
-enum JSONParser {
-    static func parse<T: Decodable>(
+struct JSONParser: JSONParserInterface {
+    func parse<T: Decodable>(
         result: Result<Data, Error>,
-        via decoder: JSONDecoder = JSONDecoder(),
+        via decoder: JSONDecoder,
         completionHandler: @escaping (Result<T, Error>) -> Void
     ) {
         switch result {

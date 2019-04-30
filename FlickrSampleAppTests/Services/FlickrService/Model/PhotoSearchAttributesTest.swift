@@ -53,7 +53,7 @@ final class PhotoSearchAttributesTest: XCTestCase {
             query.name == "safe_search"
         }
 
-        XCTAssertEqual(queryItem, URLQueryItem(name: "safe_search", value: "0"))
+        XCTAssertEqual(queryItem, URLQueryItem(name: "safe_search", value: "1"))
     }
 
     func test_WhenQuery_ThenHas3Items() {

@@ -10,21 +10,23 @@ import Foundation
 
 final class FlickrService {
     private let networkClient: FlickrNetworkClientInterface
+    private let jsonParser: JSONParserInterface
 
-    init(networkClient: FlickrNetworkClientInterface) {
+    init(networkClient: FlickrNetworkClientInterface, jsonParser: JSONParserInterface) {
         self.networkClient = networkClient
+        self.jsonParser = jsonParser
     }
 }
 
 extension FlickrService: FlickrServiceInterface {
     func photoSearch(by text: String, with attributes: PhotoSearchAttributes?, completionHandler: @escaping ((Result<PhotoSearchResponse, Error>) -> Void)) {
-        networkClient.request(for: .search(text: text), with: attributes?.query) { result in
+        networkClient.request(for: .search(text: text), with: attributes?.query) { [weak self] result in
             let mainThreadCompletionHandler: (Result<PhotoSearchResponse, Error>) -> Void = { value in
                 DispatchQueue.main.async {
                     completionHandler(value)
                 }
             }
-            JSONParser.parse(result: result, completionHandler: mainThreadCompletionHandler)
+            self?.jsonParser.parse(result: result, completionHandler: mainThreadCompletionHandler)
         }
     }
 }
