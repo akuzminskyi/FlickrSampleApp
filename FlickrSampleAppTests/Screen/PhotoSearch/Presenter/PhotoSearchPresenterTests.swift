@@ -41,6 +41,10 @@ final class PhotoSearchPresenterTests: XCTestCase {
         return NSError(domain: "fake", code: -1, userInfo: [NSLocalizedDescriptionKey: "localized error message"])
     }
 
+    private func stubbedPhotoViewModel() -> PhotoViewModel {
+        return PhotoViewModel(imageUrl: URL(staticString: "dsdsad"))
+    }
+
     // MARK: - onViewDidLoad
 
     func test_WhenOnViewDidLoad_ThenSearchBarHasPlaceholder() {
@@ -77,19 +81,42 @@ final class PhotoSearchPresenterTests: XCTestCase {
         XCTAssertEqual(mockedInteractorInput.spyfetchPhotosAtIndexes, [[]])
     }
 
-    // MARK: - search(by: completed:)
+    // MARK: - search(by: completed:).failure
 
-    func test_GivenFailure_WhenSearchCompleted_ThenHideSearchingIndicator() {
+    func test_GivenSearchFailure_WhenSearchCompleted_ThenHideSearchingIndicator() {
         presenter.search(by: "sample", completed: Result<[Photo?], Error>.failure(stubbedLocalizedError()))
 
         XCTAssertEqual(mockedViewInput.spyShowSearchingIndicator, [false])
     }
 
-    func test_GivenFailure_WhenSearchCompleted_ThenShowError() {
+    func test_GivenSearchFailure_WhenSearchCompleted_ThenShowError() {
         presenter.search(by: "sample", completed: Result<[Photo?], Error>.failure(stubbedLocalizedError()))
 
         XCTAssertEqual(mockedViewInput.spyShowError, ["localized error message"])
     }
+
+    // MARK: - search(by: completed:).success
+
+    func test_GivenSearchSuccess_WhenSearchCompleted_ThenHideSearchingIndicator() {
+        presenter.search(by: "sample", completed: Result<[Photo?], Error>.success([]))
+
+        XCTAssertEqual(mockedViewInput.spyShowSearchingIndicator, [false])
+    }
+
+    func test_GivenSearchSuccess_WhenSearchCompleted_ThenSearchTextIsTheSame() {
+        presenter.search(by: "sample", completed: Result<[Photo?], Error>.success([]))
+
+        XCTAssertEqual(mockedViewInput.spyShowSearchResult.map { $0.text }, ["sample"])
+    }
+
+    func test_GivenSearchSuccess_WhenSearchCompleted_ThenViewModelHasStubbedURLFromViewModelBuilder() {
+        presenter.search(by: "sample", completed: Result<[Photo?], Error>.success([]))
+
+        XCTAssertEqual(
+            mockedViewInput.spyShowSearchResult.map { $0.viewModels },
+            [
+                [PhotoViewModel(imageUrl: URL(staticString: "www.sample.com"))]
+            ]
+        )
+    }
 }
-
-

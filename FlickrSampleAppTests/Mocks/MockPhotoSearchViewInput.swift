@@ -13,13 +13,14 @@ final class MockPhotoSearchViewInput: PhotoSearchViewInput {
     private(set) var spySetSearchBarPlaceholder = [String?]()
     private(set) var spyShowSearchingIndicator = [Bool]()
     private(set) var spyShowError = [String]()
+    private(set) var spyShowSearchResult = [(text: String, viewModels: [PhotoViewModel])]()
 
     func setSearchBarPlaceholder(_ text: String?) {
         spySetSearchBarPlaceholder.append(text)
     }
 
     func showSearchResult(for text: String, with viewModels: [PhotoViewModel]) {
-
+        spyShowSearchResult.append((text, viewModels))
     }
 
     func showUpdatedViewModels(_ viewModels: [PhotoViewModel], at range: Range<Int>) {

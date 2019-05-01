@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct PhotoViewModel {
+struct PhotoViewModel: Equatable {
     let imageUrl: URL?
 }
